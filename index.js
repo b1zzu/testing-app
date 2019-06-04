@@ -1,10 +1,3 @@
-import { SecurityService, DeviceCheckType } from '@aerogear/security';
-import { Auth } from '@aerogear/auth';
-import { init } from '@aerogear/app';
-import { PushRegistration } from '@aerogear/push'
-import * as config from "./mobile-services"
-
-const app = init(config);
 
 document.addEventListener("deviceready", () => {
 
@@ -14,14 +7,16 @@ document.addEventListener("deviceready", () => {
   });
 
   push.on('registration', data => {
-
-    new PushRegistration(app.config)
-      .register(data.registrationId, "itisme", ["tutu"])
-      .then(() => {
-        document.getElementById("code").value = data.registrationId;
-      }).catch(err => {
-        done(err);
-      });
+    console.log(`registration id: ${data.registrationId}`);
   });
+
+  push.on("notification", data => {
+    console.log(`recivied notification: ${data.message}`);
+  })
+
+  push.on("error", e => {
+    console.error(e);
+  });
+
 }, false);
 
