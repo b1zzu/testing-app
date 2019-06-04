@@ -23,7 +23,7 @@ const config = {
       "id": "fb8ebb60-83b1-11e9-9805-e86a640057de",
       "name": "ups",
       "type": "push",
-      "url": "http://10.0.2.2:8089",
+      "url": "http://10.0.2.2:8089/",
       "config": {
         "android": {
           "senderId": "331104058747",
